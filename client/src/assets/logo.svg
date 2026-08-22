@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 120" width="460" height="120" role="img" aria-label="Lumora Beauty logo">
+  <defs>
+    <linearGradient id="lumGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8D5A3"/>
+      <stop offset="45%" stop-color="#D9909A"/>
+      <stop offset="100%" stop-color="#9C4A56"/>
+    </linearGradient>
+    <linearGradient id="lumGrad2" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#9C4A56"/>
+      <stop offset="100%" stop-color="#C9A24B"/>
+    </linearGradient>
+  </defs>
+  <!-- Mark: three overlapping petals forming a radiant bloom -->
+  <g transform="translate(8,10)">
+    <path d="M50 6C58 22 58 40 50 54C42 40 42 22 50 6Z" fill="url(#lumGrad)"/>
+    <path d="M50 54C36 48 22 38 14 24C30 22 46 28 56 40C54 45 52 50 50 54Z" fill="url(#lumGrad2)" opacity="0.92"/>
+    <path d="M50 54C64 48 78 38 86 24C70 22 54 28 44 40C46 45 48 50 50 54Z" fill="url(#lumGrad)" opacity="0.85"/>
+    <circle cx="50" cy="54" r="5.5" fill="#fff"/>
+    <circle cx="50" cy="54" r="5.5" fill="url(#lumGrad2)" opacity="0.55"/>
+  </g>
+  <text x="112" y="60" font-family="'Playfair Display', Georgia, serif" font-size="42" fill="#2B2420" font-weight="600">Lumora</text>
+  <text x="115" y="84" font-family="'Poppins', Arial, sans-serif" font-size="14" letter-spacing="5" fill="#9C4A56" font-weight="600">BEAUTY</text>
+</svg>
