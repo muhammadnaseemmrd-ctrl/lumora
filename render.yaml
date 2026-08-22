@@ -1,0 +1,55 @@
+# Render Blueprint — deploys the Express API as a persistent Node web
+# service. Import this repo into Render (New -> Blueprint) and it will pick
+# this file up automatically. You'll still need to fill in the secret env
+# vars (MONGO_URI, JWT_SECRET, ADMIN_EMAIL/PASSWORD, Stripe/JazzCash/
+# EasyPaisa keys) in the Render dashboard — never commit real secrets here.
+#
+# Note: uploaded product images are written to server/uploads on local disk,
+# which is NOT persistent across Render deploys/restarts on the free tier.
+# For production, either attach a Render Disk to this service, or switch
+# the upload storage in server/middleware/upload.js to Cloudinary/S3.
+services:
+  - type: web
+    name: lumora-beauty-api
+    runtime: node
+    plan: free
+    rootDir: server
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 5000
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: CLIENT_URL
+        sync: false
+      - key: ADMIN_NAME
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: STRIPE_SECRET_KEY
+        sync: false
+      - key: STRIPE_WEBHOOK_SECRET
+        sync: false
+      - key: JAZZCASH_MERCHANT_ID
+        sync: false
+      - key: JAZZCASH_PASSWORD
+        sync: false
+      - key: JAZZCASH_HASH_KEY
+        sync: false
+      - key: JAZZCASH_RETURN_URL
+        sync: false
+      - key: EASYPAISA_STORE_ID
+        sync: false
+      - key: EASYPAISA_HASH_KEY
+        sync: false
+      - key: EASYPAISA_RETURN_URL
+        sync: false
