@@ -1,0 +1,33 @@
+# Place your Netlify site's "Base directory" as this repo root and Netlify
+# will read this file automatically. It builds only the client/ folder —
+# the server/ (Express + MongoDB) is a separate app and does NOT deploy to
+# Netlify; deploy it to Render/Railway/a VPS instead (see README.md).
+
+[build]
+  base = "client"
+  command = "npm install && npm run build"
+  publish = "client/dist"
+
+# React Router uses client-side routing, so every path must fall back to
+# index.html or refreshing/deep-linking to e.g. /shop or /product/xyz will
+# 404 on Netlify.
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Uncomment and set your real API URL once the backend is deployed (Render/
+# Railway/etc.) so /sitemap.xml on the frontend domain always reflects the
+# live product catalog instead of the static fallback in client/public.
+# [[redirects]]
+#   from = "/sitemap.xml"
+#   to = "https://YOUR-API-DOMAIN/sitemap.xml"
+#   status = 200
+#   force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
