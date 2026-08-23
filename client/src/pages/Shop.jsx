@@ -24,13 +24,21 @@ export default function Shop() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
+  // Fetch function used by initial load and polling
+  const fetchProducts = () => {
     setLoading(true);
     const query = activeCat !== "all" ? `?category=${activeCat}` : "";
-    api
+    return api
       .get(`/products${query}`)
       .then(({ data }) => setProducts(data))
       .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    fetchProducts();
+    // Poll every 30 seconds for real-time-ish updates
+    const id = setInterval(fetchProducts, 30 * 1000);
+    return () => clearInterval(id);
   }, [activeCat]);
 
   return (
