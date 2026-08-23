@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const API_BASE_URL = "https://lumora-beauty-api-production.up.railway.app/api";
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || "/api"
+  baseURL: API_BASE_URL
 });
 
 // Attach the admin JWT (if present) to every request.
@@ -31,7 +33,7 @@ export function money(n) {
 export function resolveImage(path) {
   if (!path) return "";
   if (/^https?:\/\//.test(path)) return path;
-  const base = (import.meta.env.VITE_API_URL || "/api").replace(/\/api\/?$/, "");
+  const base = API_BASE_URL.replace(/\/api\/?$/, "");
   return `${base}${path}`;
 }
 
